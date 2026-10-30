@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFC907">
+  <meta
+    name="description"
+    content="Play Water Quest, a charity: water-inspired game. Collect jerry cans and learn about the clean water mission.">
+  <title>Water Quest | charity: water</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <main class="container">
+    <img
+      class="charity-water-logo"
+      src="img/cw_logo_horizontal.png"
+      alt="charity: water">
+
+    <header class="game-header">
+      <p class="eyebrow">A quick clean-water quest</p>
+      <h1>Water Quest</h1>
+      <p class="game-instructions">
+        Choose a difficulty, then tap the yellow jerry can before it moves.
+        Collect the goal before time runs out. Missing a can or tapping an
+        empty tile costs one point.
+      </p>
+    </header>
+
+    <section class="game-panel" aria-label="Water Quest game">
+      <div class="game-options">
+        <label for="difficulty-level">Difficulty</label>
+        <select id="difficulty-level" name="difficulty">
+          <option value="easy">Easy</option>
+          <option value="normal" selected>Normal</option>
+          <option value="hard">Hard</option>
+        </select>
+
+        <label class="sound-option" for="sound-toggle">
+          <input id="sound-toggle" type="checkbox" checked>
+          Sound effects
+        </label>
+      </div>
+
+      <p
+        id="difficulty-summary"
+        class="difficulty-summary"
+        aria-live="polite">
+      </p>
+
+      <div class="stats" aria-label="Game status">
+        <p>
+          Cans Collected
+          <span>
+            <strong id="current-cans">0</strong>
+            <span class="stat-divider">/</span>
+            <span id="goal-cans">20</span>
+          </span>
+        </p>
+
+        <p>
+          Time Left
+          <span>
+            <strong id="timer">30</strong>
+            <span class="stat-unit">s</span>
+          </span>
+        </p>
+      </div>
+
+      <div
+        class="progress-track"
+        role="progressbar"
+        aria-label="Can collection progress"
+        aria-valuemin="0"
+        aria-valuenow="0"
+        aria-valuemax="20">
+        <div id="progress-fill" class="progress-fill"></div>
+      </div>
+
+      <div
+        id="achievements"
+        class="achievement"
+        role="status"
+        aria-live="polite">
+        Choose a difficulty, then press Start Game when you're ready.
+      </div>
+
+      <div
+        class="game-grid"
+        role="group"
+        aria-label="Nine-tile game grid">
+      </div>
+
+      <div class="game-controls">
+        <button
+          id="start-game"
+          class="button button-primary"
+          type="button">
+          Start Game
+        </button>
+
+        <button
+          id="reset-game"
+          class="button button-secondary"
+          type="button"
+          hidden>
+          Reset Round
+        </button>
+      </div>
+    </section>
+
+    <section class="mission-note" aria-labelledby="mission-title">
+      <span class="mission-drop" aria-hidden="true">●</span>
+      <div>
+        <h2 id="mission-title">Every quest starts with clean water.</h2>
+        <p>
+          This game is inspired by charity: water's mission to bring clean and
+          safe water to people around the world.
+        </p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>Want to learn more or support the mission?</p>
+      <a
+        href="https://www.charitywater.org/"
+        target="_blank"
+        rel="noopener noreferrer">
+        Visit charity: water
+      </a>
+      <span aria-hidden="true">·</span>
+      <a
+        href="https://www.charitywater.org/donate"
+        target="_blank"
+        rel="noopener noreferrer">
+        Explore ways to give
+      </a>
+    </footer>
+  </main>
+
+  <div id="confetti" aria-hidden="true"></div>
+
+  <noscript>This game needs JavaScript enabled to play.</noscript>
+  <script src="script.js"></script>
+</body>
+</html>

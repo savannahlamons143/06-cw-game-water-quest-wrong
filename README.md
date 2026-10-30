@@ -1,11 +1,26 @@
-<div align="center">
+# charity: water – Water Quest (React)
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+A responsive, accessible tap-the-can game built with React, TypeScript, and Vite, featuring charity: water branding and mechanics.
 
-  <h1>Built with AI Studio</h2>
+## Features
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+- **Goal**: Collect 20 yellow jerry cans within 30 seconds.
+- **Scoring & Penalties**:
+  - +1 point for each yellow jerry can tapped.
+  - -1 point penalty for clicking an empty tile or missing a can before it despawns (score cannot drop below 0).
+- **Audio-visual & Animation**:
+  - Can pop-up animations.
+  - Multi-colored victory confetti celebration when reaching 20+ cans.
+  - Randomized dynamic victory and encouragement messages upon round completion.
+- **Accessibility**:
+  - Full keyboard support (Space / Enter to tap tiles).
+  - Polite ARIA live regions and status descriptions for screen readers.
+  - Respects `prefers-reduced-motion`.
+- **Responsive Layout**:
+  - Mobile-friendly grid and controls tailored to all screen sizes.
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## Development
 
-</div>
+- Start dev server: `npm run dev`
+- Build production bundle: `npm run build`
+- Preview production build: `npm run preview`

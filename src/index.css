@@ -1,0 +1,495 @@
+/* charity: water-inspired colors */
+:root {
+  --yellow: #FFC907;
+  --blue: #2E9DF7;
+  --light-blue: #8BD1CB;
+  --green: #4FCB53;
+  --orange: #FF902A;
+  --text: #263238;
+  --muted: #52656D;
+  --page-background: #F3F8F8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 30px 18px;
+  background:
+    radial-gradient(circle at 8% 10%, rgba(139, 209, 203, 0.25), transparent 25rem),
+    var(--page-background);
+  color: var(--text);
+  font-family: Avenir, "Avenir Next", "Proxima Nova", Arial, sans-serif;
+}
+
+.container {
+  width: min(100%, 760px);
+  margin: 0 auto;
+  padding: 30px clamp(18px, 5vw, 46px);
+  background-color: #FFFFFF;
+  border: 1px solid rgba(38, 50, 56, 0.06);
+  border-radius: 20px;
+  box-shadow: 0 12px 36px rgba(25, 55, 70, 0.1);
+}
+
+.charity-water-logo {
+  display: block;
+  width: min(210px, 75%);
+  max-height: 58px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 22px;
+}
+
+.game-header {
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: #126EAA;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  color: #17242A;
+  font-size: clamp(34px, 7vw, 48px);
+  line-height: 1.1;
+}
+
+.game-instructions {
+  max-width: 570px;
+  margin: 14px auto 24px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.game-panel {
+  padding: clamp(16px, 4vw, 28px);
+  background-color: #FBFDFD;
+  border: 1px solid #E3EEF1;
+  border-radius: 16px;
+}
+
+.game-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin-bottom: 18px;
+  color: #344950;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#difficulty-level {
+  min-height: 40px;
+  padding: 8px 34px 8px 12px;
+  border: 1px solid #B9D2DC;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+#difficulty-level:focus-visible,
+.sound-option input:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+#difficulty-level:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.sound-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+}
+
+.sound-option input {
+  width: 17px;
+  height: 17px;
+  accent-color: #1685DD;
+}
+
+.difficulty-summary {
+  margin: -5px 0 14px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 0 0 10px;
+}
+
+.stats p {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding: 13px 10px;
+  background-color: #EAF6FC;
+  border-radius: 10px;
+  color: #3C5660;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.stats p > span {
+  color: #126EAA;
+  font-size: 25px;
+  letter-spacing: 0;
+}
+
+.stats strong {
+  font-weight: 800;
+}
+
+.stat-divider {
+  padding: 0 4px;
+  color: #7395A3;
+  font-size: 16px;
+}
+
+.stat-unit {
+  margin-left: 2px;
+  font-size: 14px;
+}
+
+.progress-track {
+  height: 9px;
+  overflow: hidden;
+  background-color: #DDEAF0;
+  border-radius: 999px;
+}
+
+.progress-fill {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--yellow), var(--orange));
+  border-radius: inherit;
+  transition: width 0.25s ease;
+}
+
+.achievement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 8px 4px;
+  color: #126EAA;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(8px, 2vw, 14px);
+  width: 100%;
+  max-width: 440px;
+  margin: 8px auto 18px;
+}
+
+.grid-cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background-color: #EAF4F7;
+  border: 2px solid #D4E6EC;
+  border-radius: clamp(9px, 2vw, 14px);
+  cursor: pointer;
+  transition:
+    background-color 0.18s ease,
+    transform 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.grid-cell:hover {
+  background-color: #DFF1F7;
+  border-color: #A9D8E5;
+}
+
+.grid-cell:active {
+  transform: scale(0.97);
+}
+
+.grid-cell:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.water-can-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(78px, 72%);
+  height: min(78px, 72%);
+  transform: translate(-50%, -50%);
+}
+
+.water-can {
+  width: 100%;
+  height: 100%;
+  background: url("img/water-can.png") center / contain no-repeat;
+  cursor: pointer;
+  animation: pop-up 0.35s cubic-bezier(0.17, 0.67, 0.34, 1.4);
+  transform-origin: center;
+}
+
+@keyframes pop-up {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.game-controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.button {
+  min-height: 46px;
+  padding: 11px 23px;
+  border: 2px solid transparent;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(38, 50, 56, 0.12);
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+}
+
+.button-primary {
+  background-color: var(--yellow);
+  color: #1A1A1A;
+}
+
+.button-primary:hover {
+  background-color: #EAB900;
+}
+
+.button-secondary {
+  border-color: #1685DD;
+  background-color: #FFFFFF;
+  color: #126EAA;
+}
+
+.button-secondary:hover {
+  background-color: #EAF6FC;
+}
+
+.game-controls [hidden] {
+  display: none;
+}
+
+.mission-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 24px 0 18px;
+  padding: 17px 18px;
+  background-color: #FFF8D8;
+  border-radius: 12px;
+}
+
+.mission-drop {
+  display: grid;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  background-color: var(--yellow);
+  border-radius: 50% 50% 50% 8px;
+  color: #126EAA;
+  font-size: 16px;
+  transform: rotate(-45deg);
+}
+
+.mission-note h2 {
+  margin: 0 0 4px;
+  color: #24363D;
+  font-size: 16px;
+}
+
+.mission-note p {
+  margin: 0;
+  color: #536168;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 15px;
+  border-top: 1px solid #E6EEF1;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+.site-footer p {
+  flex-basis: 100%;
+  margin: 0 0 2px;
+}
+
+.site-footer a {
+  color: #126EAA;
+  font-weight: 800;
+  text-underline-offset: 3px;
+}
+
+.site-footer a:hover {
+  color: #084F7C;
+}
+
+.site-footer a:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+#confetti {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.confetti {
+  position: absolute;
+  top: -12px;
+  width: 9px;
+  height: 14px;
+  animation: confetti-fall 2.5s ease-in forwards;
+}
+
+@keyframes confetti-fall {
+  to {
+    transform: translateY(105vh) rotate(720deg);
+    opacity: 0.2;
+  }
+}
+
+noscript {
+  display: block;
+  max-width: 760px;
+  margin: 14px auto;
+  color: #9A2E23;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Adjust the layout for phones */
+@media (max-width: 520px) {
+  body {
+    padding: 16px 10px;
+  }
+
+  .container {
+    padding: 22px 14px;
+    border-radius: 14px;
+  }
+
+  .charity-water-logo {
+    margin-bottom: 18px;
+  }
+
+  .game-instructions {
+    font-size: 15px;
+  }
+
+  .game-options {
+    gap: 9px 12px;
+    font-size: 13px;
+  }
+
+  .stats p {
+    font-size: 11px;
+  }
+
+  .stats p > span {
+    font-size: 22px;
+  }
+
+  .mission-note {
+    margin-top: 18px;
+    padding: 14px;
+  }
+
+  .mission-note h2 {
+    font-size: 15px;
+  }
+
+  .mission-note p {
+    font-size: 13px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
